@@ -1,4 +1,4 @@
-const searchRecipes = async (searchTerm: string, page: number) => {
+export const searchRecipes = async (searchTerm: string, page: number) => {
   // const baseURL = new URL("http://localhost:5000/api/recipes/search");
   const baseURL = new URL("https://424z4d-5000.csb.app/api/recipes/search");
 
@@ -14,5 +14,16 @@ const searchRecipes = async (searchTerm: string, page: number) => {
   return response.json();
 };
 
-export { searchRecipes };
+export const getRecipeSummary = async (recipeId: string) => {
+  // const url = new URL(`http://localhost:5000/api/recipes/${recipeId}/summary`);
+  const url = new URL(`https://424z4d-5000.csb.app/api/recipes/${recipeId}/summary`);
+  
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  return response.json();
+};
 
